@@ -5,7 +5,7 @@ library(lubridate)
 library(dplyr)
 library(ggplot2)
 library(magrittr)
-
+source("~/Main.R")
 
 ui <- fluidPage(
   sliderInput(

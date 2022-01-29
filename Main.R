@@ -4,13 +4,14 @@ library(dplyr)
 library(ggplot2)
 library(magrittr)
 library(RGoogleAnalytics)
+source("~/.Rprofile")
 
 con <- dbConnect(RPostgres::Postgres(),
                  dbname = 'dcf8hlqhi8reh0',
                  host = 'ec2-3-216-113-109.compute-1.amazonaws.com',
                  port = 5432, 
                  user = 'qqpxqnmxtarcrc',
-                 password = '861f17bc5482a2792f3cf85138823f457eb7710bd4f01c4c93908139d0a8191e')
+                 password = password.PSQL)
 
 
 tablaOrdenes <- dbFetch(
@@ -40,9 +41,9 @@ ggplot(data=tablaPromedios, aes(fecha_creacion_formato, ingresos, group=1)) +
 
 ## Conección a GA
 
-client.secret <- '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'
-client.id <- '126359526406-ou4qopvojbeofvvml3257goga8rt7861.apps.googleusercontent.com'
-view.id <- 'ga:259744586'
+client.secret <- client.secret.GA
+client.id <- client.id.GA
+view.id <- view.id.GA
 
 if(!file.exists('./token')) {
   token <- Auth(client.id, client.secret)
